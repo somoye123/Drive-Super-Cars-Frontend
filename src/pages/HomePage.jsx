@@ -9,6 +9,9 @@ const HomePage = ({ auth }) => {
       auth.handleAuthentication();
     }
   }, [location]);
+
+  if (/access_token|id_token|error/.test(location.hash)) return <h1>Loading...</h1>;
+
   return (
     <>
       <h1>Home</h1>
