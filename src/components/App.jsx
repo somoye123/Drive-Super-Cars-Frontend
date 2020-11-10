@@ -5,7 +5,6 @@ import PageNotFound from '../pages/ErrorPage';
 import Auth from '../Auth0/auth';
 import Navbar from './Navbar';
 import CarList from '../pages/CarsListPage';
-import Callback from './Callback';
 
 function App() {
   const history = useHistory();
@@ -16,10 +15,6 @@ function App() {
       <Navbar auth={auth} />
       <Switch>
         <Route path="/" exact render={() => <HomePage auth={auth} />} />
-        <Route
-          path="/callback"
-          render={() => <Callback auth={auth} />}
-        />
         <Route
           path="/car-list"
           // eslint-disable-next-line no-confusing-arrow
