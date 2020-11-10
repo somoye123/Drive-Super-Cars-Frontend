@@ -13,12 +13,8 @@ const HomePage = ({ auth }) => {
   );
 };
 
-HomePage.defaultProps = {
-  auth: null,
-};
-
 HomePage.propTypes = {
-  auth: PropTypes.object || null,
+  auth: PropTypes.func.isRequired,
 };
 
 export default HomePage;
