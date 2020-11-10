@@ -1,9 +1,7 @@
 import React from 'react';
 
 function CarsListPage() {
-  return (
-    <div />
-  );
+  return <div>somoye</div>;
 }
 
 export default CarsListPage;
