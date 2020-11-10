@@ -3,6 +3,9 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import PageNotFound from '../pages/ErrorPage';
 import Auth from '../Auth0/auth';
+import Navbar from './Navbar';
+import CarList from '../pages/CarsListPage';
+import Callback from './Callback';
 
 function App() {
   const history = useHistory();
@@ -10,11 +13,21 @@ function App() {
 
   return (
     <>
+      <Navbar auth={auth} />
       <Switch>
+        <Route path="/" exact render={() => <HomePage auth={auth} />} />
         <Route
-          path="/"
-          exact
-          render={() => <HomePage auth={auth} />}
+          path="/callback"
+          render={() => <Callback auth={auth} />}
+        />
+        <Route
+          path="/car-list"
+          // eslint-disable-next-line no-confusing-arrow
+          render={() => auth.isAuthenticated() ? (
+            <CarList auth={auth} />
+          ) : (
+            auth.login()
+          )}
         />
         <Route component={PageNotFound} />
       </Switch>
