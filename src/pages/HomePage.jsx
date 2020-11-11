@@ -1,16 +1,27 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { loadUser } from '../redux/actions/userAction';
 
-const HomePage = ({ auth }) => {
-  const location = useLocation();
+const HomePage = ({ auth, loadUser, User }) => {
+  const loadUserProfile = () => {
+    let body;
+    const token = auth.getAccessToken();
+    auth.getProfile((profile, error) => {
+      if (error) throw new Error(error);
+      body = {
+        username: profile.nickname,
+        email: profile.email,
+      };
+    });
+    setTimeout(() => loadUser(body, token), 2000);
+  };
+
   React.useEffect(() => {
-    if (/access_token|id_token|error/.test(location.hash)) {
-      auth.handleAuthentication();
+    if (auth.isAuthenticated() && (Object.keys(User).length === 0 && User.constructor === Object)) {
+      loadUserProfile();
     }
-  }, [location]);
-
-  if (/access_token|id_token|error/.test(location.hash)) return <h1>Loading...</h1>;
+  }, []);
 
   return (
     <>
@@ -19,7 +30,19 @@ const HomePage = ({ auth }) => {
   );
 };
 
-HomePage.propTypes = {
-  auth: PropTypes.func.isRequired,
+HomePage.defaultProps = {
+  auth: null,
+  User: null,
 };
-export default HomePage;
+
+HomePage.propTypes = {
+  auth: PropTypes.object || null,
+  User: PropTypes.object || null,
+  loadUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = ({ User }) => ({ User });
+
+const mapDispatchToProps = { loadUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
