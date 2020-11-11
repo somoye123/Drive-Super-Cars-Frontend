@@ -24,7 +24,7 @@ function App() {
             auth.login()
           )}
         />
-        <Route component={PageNotFound} />
+        <Route path="*" component={PageNotFound} />
       </Switch>
     </>
   );
