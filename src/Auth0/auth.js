@@ -2,6 +2,7 @@ import auth0 from 'auth0-js';
 
 export default function Auth(historyValue) {
   const history = historyValue;
+  let userProfile = null;
   const auth = new auth0.WebAuth({
     domain: process.env.REACT_APP_AUTH0_DOMAIN,
     clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -26,7 +27,7 @@ export default function Auth(historyValue) {
     auth.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         setSession(authResult);
-        history.push('/car-list');
+        history.push('/');
       } else if (err) {
         history.push('/error');
         throw new Error(err);
@@ -57,11 +58,20 @@ export default function Auth(historyValue) {
     return accessToken;
   };
 
+  const getProfile = cb => {
+    if (userProfile) return cb(userProfile);
+    return auth.client.userInfo(getAccessToken(), (err, profile) => {
+      if (profile) userProfile = profile;
+      cb(profile, err);
+    });
+  };
+
   return {
     login,
     isAuthenticated,
     logout,
     handleAuthentication,
     getAccessToken,
+    getProfile,
   };
 }
