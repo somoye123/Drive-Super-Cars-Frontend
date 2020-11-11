@@ -24,8 +24,12 @@ const Navbar = ({ auth }) => {
     </nav>
   );
 };
+Navbar.defaultProps = {
+  auth: null,
+};
+
 Navbar.propTypes = {
-  auth: PropTypes.func.isRequired,
+  auth: PropTypes.object || null,
 };
 
 export default Navbar;
