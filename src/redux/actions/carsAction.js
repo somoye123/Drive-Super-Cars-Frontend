@@ -8,7 +8,11 @@ export function loadCars(token) {
   return async dispatch => {
     try {
       const data = await getCars(token);
-      if (data) { dispatch(loadCarsSuccess(data)); }
+      if (data) {
+        dispatch(loadCarsSuccess(data));
+      } else {
+        dispatch(loadCarsSuccess(null));
+      }
     } catch (error) {
       toast.error(`Whoops!, ${error.message} occured`);
     }
