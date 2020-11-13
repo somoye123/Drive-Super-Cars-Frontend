@@ -1,5 +1,5 @@
 export default {
-  cars: [],
+  cars: null,
   loading: true,
   car: {},
   user: {},
