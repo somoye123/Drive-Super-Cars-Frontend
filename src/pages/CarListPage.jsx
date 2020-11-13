@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loadCars } from '../redux/actions/carsAction';
 
@@ -29,6 +30,9 @@ const CarList = ({ auth, Cars, loadCars }) => {
             <img src={`${process.env.REACT_APP_SERVER_BLOB_PATH}${car.img_url}`} alt="car" />
             <p>{car.name}</p>
             <p>{car.description}</p>
+            <Link to={`/car/${car.id}`} className="btn btn-primary btn-details">
+              details
+            </Link>
           </div>
         ))}
       </section>
