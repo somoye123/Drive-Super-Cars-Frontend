@@ -29,7 +29,15 @@ function App() {
             auth.login()
           )}
         />
-        <Route path="/car/:id" render={() => <SingleCarPage auth={auth} />} />
+        <Route
+          path="/car/:id"
+          // eslint-disable-next-line no-confusing-arrow
+          render={() => auth.isAuthenticated() ? (
+            <SingleCarPage auth={auth} />
+          ) : (
+            auth.login()
+          )}
+        />
         <Route path="*" component={PageNotFound} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
