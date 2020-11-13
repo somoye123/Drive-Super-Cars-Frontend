@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import HomePage from '../pages/HomePage';
 import PageNotFound from '../pages/ErrorPage';
 import Auth from '../Auth0/auth';
@@ -7,6 +8,7 @@ import Navbar from './Navbar';
 import CarListPage from '../pages/CarListPage';
 import Callback from './Callback';
 import SingleCarPage from '../pages/SingleCarPage';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const history = useHistory();
@@ -30,6 +32,7 @@ function App() {
         <Route path="/car/:id" render={() => <SingleCarPage auth={auth} />} />
         <Route path="*" component={PageNotFound} />
       </Switch>
+      <ToastContainer autoClose={3000} hideProgressBar />
     </>
   );
 }
