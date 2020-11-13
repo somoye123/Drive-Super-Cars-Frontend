@@ -6,6 +6,7 @@ import Auth from '../Auth0/auth';
 import Navbar from './Navbar';
 import CarListPage from '../pages/CarListPage';
 import Callback from './Callback';
+import SingleCarPage from '../pages/SingleCarPage';
 
 function App() {
   const history = useHistory();
@@ -26,6 +27,7 @@ function App() {
             auth.login()
           )}
         />
+        <Route path="/car/:id" render={() => <SingleCarPage auth={auth} />} />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </>
