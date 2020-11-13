@@ -14,7 +14,7 @@ const HomePage = ({ auth, loadUser, User }) => {
         email: profile.email,
       };
     });
-    setTimeout(() => loadUser(body, token), 2000);
+    setTimeout(() => loadUser(body, token), 500);
   };
 
   React.useEffect(() => {
