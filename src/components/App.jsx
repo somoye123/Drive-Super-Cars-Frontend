@@ -4,7 +4,7 @@ import HomePage from '../pages/HomePage';
 import PageNotFound from '../pages/ErrorPage';
 import Auth from '../Auth0/auth';
 import Navbar from './Navbar';
-import CarList from '../pages/CarsListPage';
+import CarListPage from '../pages/CarListPage';
 import Callback from './Callback';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           path="/car-list"
           // eslint-disable-next-line no-confusing-arrow
           render={() => auth.isAuthenticated() ? (
-            <CarList auth={auth} />
+            <CarListPage auth={auth} />
           ) : (
             auth.login()
           )}
