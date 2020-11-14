@@ -16,6 +16,11 @@ const Navbar = ({ auth }) => {
           <Link to="/car-list">Cars</Link>
         </li>
         )}
+        {isAuthenticated() && (
+        <li>
+          <Link to="/appointments">Appointments</Link>
+        </li>
+        )}
         <li>
           <button type="button" onClick={isAuthenticated() ? logout : login}>
             {isAuthenticated() ? 'Log Out' : 'Log In'}
