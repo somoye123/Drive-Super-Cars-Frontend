@@ -1,33 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ auth }) => {
   const { isAuthenticated, login, logout } = auth;
+  const activeStyle = { color: '#F15B2A' };
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        {isAuthenticated() && (
-        <li>
-          <Link to="/car-list">Cars</Link>
-        </li>
-        )}
-        {isAuthenticated() && (
-        <li>
-          <Link to="/appointments">Appointments</Link>
-        </li>
-        )}
-        <li>
-          <button type="button" onClick={isAuthenticated() ? logout : login}>
-            {isAuthenticated() ? 'Log Out' : 'Log In'}
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <header className="px-md-5 bg-white">
+      <nav className="navbar navbar-expand-lg px-md-5">
+        <h3 className="navbar-brand text-primary font-weight-bold">Drive Super Cars</h3>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul className="navbar-nav ml-auto">
+            <li>
+              <NavLink to="/" className="nav-link" activeStyle={activeStyle} exact>Home</NavLink>
+            </li>
+            {isAuthenticated() && (
+            <li>
+              <NavLink to="/car-list" className="nav-link" activeStyle={activeStyle}>Cars</NavLink>
+            </li>
+            )}
+            {isAuthenticated() && (
+            <li>
+              <NavLink to="/appointments" className="nav-link" activeStyle={activeStyle}>Appointments</NavLink>
+            </li>
+            )}
+            <li>
+              <button
+                type="button"
+                className={`${isAuthenticated() ? 'btn-danger' : 'btn-success'} btn px-3 py-2`}
+                onClick={isAuthenticated() ? logout : login}
+              >
+                {isAuthenticated() ? 'Log Out' : 'Log In'}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 Navbar.defaultProps = {
