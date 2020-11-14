@@ -6,6 +6,7 @@ import PageNotFound from '../pages/ErrorPage';
 import Auth from '../Auth0/auth';
 import Navbar from './Navbar';
 import CarListPage from '../pages/CarListPage';
+import AppointmentListPage from '../pages/AppointmentListPage';
 import Callback from './Callback';
 import SingleCarPage from '../pages/SingleCarPage';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,6 +35,15 @@ function App() {
           // eslint-disable-next-line no-confusing-arrow
           render={() => auth.isAuthenticated() ? (
             <SingleCarPage auth={auth} />
+          ) : (
+            auth.login()
+          )}
+        />
+        <Route
+          path="/appointments"
+          // eslint-disable-next-line no-confusing-arrow
+          render={() => auth.isAuthenticated() ? (
+            <AppointmentListPage auth={auth} />
           ) : (
             auth.login()
           )}
