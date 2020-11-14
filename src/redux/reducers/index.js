@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import User from './userReducer';
 import Cars from './carsReducer';
 import Car from './carReducer';
-import Appointment from './appointmentReducer';
+import Appointments from './appointmentReducer';
 
 export default combineReducers({
-  User, Cars, Car, Appointment,
+  User, Cars, Car, Appointments,
 });
