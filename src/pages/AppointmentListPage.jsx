@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { loadAppointments } from '../redux/actions/appointmentAction';
+import { loadAppointments } from '../redux/actions/appointmentsAction';
 
 const AppointmentList = ({
   User, Appointments, auth, loadAppointments,
