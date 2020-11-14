@@ -1,4 +1,5 @@
 .defaultHero {
+  margin-top: 8vh;
   min-height: 92vh;
   background: url("./images/defaultBcg.png") center/cover no-repeat;
 }
