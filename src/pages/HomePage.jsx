@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { loadUser } from '../redux/actions/userAction';
 
 const HomePage = ({ auth, loadUser, User }) => {
@@ -24,9 +25,16 @@ const HomePage = ({ auth, loadUser, User }) => {
   }, []);
 
   return (
-    <>
-      <h1>Home</h1>
-    </>
+    <main className="defaultHero d-flex align-items-center justify-content-center px-4 px-md-0">
+      <section className="banner text-white">
+        <h1>Welcome to Drive Super Cars</h1>
+        <div />
+        <p>Your home of mind-blowing rides</p>
+        <Link to="/car-list" className="banner-btn">
+          our cars
+        </Link>
+      </section>
+    </main>
   );
 };
 
