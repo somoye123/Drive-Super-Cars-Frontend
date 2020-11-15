@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { loadCar, loadCarSuccess } from '../redux/actions/carAction';
 import { createAppointment } from '../api/userApi';
 
@@ -26,14 +26,25 @@ const SingleCar = ({
     description,
   } = Car;
   return (
-    <section className="section meal-section">
-      <Link to="/" className="btn btn-primary">
-        back home
-      </Link>
-      <h2 className="section-title">{name}</h2>
-      <img src={`${process.env.REACT_APP_SERVER_BLOB_PATH}${Car.img_url}`} alt="car" />
-      <p>{description}</p>
-      <button type="button" onClick={() => createAppointment(User.id, Car.id, auth.getAccessToken())}>test drive</button>
+    <section className="car-section">
+      <button type="button" className="btn mt-4 section-title banner-btn" onClick={() => createAppointment(User.id, Car.id, auth.getAccessToken())}>
+        book test drive
+      </button>
+      <div className="detail">
+        <img src={Car.img_url} alt={name} />
+        <div className="detail-info">
+          <p>
+            <span className="detail-data">name :</span>
+            {' '}
+            {name}
+          </p>
+          <p>
+            <span className="detail-data">description  :</span>
+            {' '}
+            {description}
+          </p>
+        </div>
+      </div>
     </section>
   );
 };
