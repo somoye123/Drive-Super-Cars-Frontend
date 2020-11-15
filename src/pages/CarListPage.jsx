@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loadCars } from '../redux/actions/carsAction';
+import Car from '../components/Car';
 
 const CarList = ({ auth, Cars, loadCars }) => {
   const loadApplicationCars = () => {
     const token = auth.getAccessToken();
     loadCars(token);
   };
+
+  const cars = Cars.map(car => <Car key={car.id} car={car} />);
 
   React.useEffect(() => {
     if (Cars && Cars.length < 1) {
@@ -23,20 +25,15 @@ const CarList = ({ auth, Cars, loadCars }) => {
   }
 
   return (
-    <>
-      <section className="section">
-        {Cars.map(car => (
-          <div className="meals-center" key={car.id}>
-            <img src={`${process.env.REACT_APP_SERVER_BLOB_PATH}${car.img_url}`} alt="car" />
-            <p>{car.name}</p>
-            <p>{car.description}</p>
-            <Link to={`/car/${car.id}`} className="btn btn-primary btn-details">
-              details
-            </Link>
-          </div>
-        ))}
-      </section>
-    </>
+    <section className="super-cars">
+      <div className="section-title">
+        <h4>Super Cars</h4>
+        <div />
+      </div>
+      <div className="super-cars-center">
+        {cars}
+      </div>
+    </section>
   );
 };
 
