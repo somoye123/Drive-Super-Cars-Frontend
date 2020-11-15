@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Car = ({ car }) => (
   <article className="car">
     <div className="img-container">
-      <img src={`${process.env.REACT_APP_SERVER_BLOB_PATH}${car.img_url}`} alt="car" />
+      <img src={car.img_url} alt="car" />
       <Link to={`/car/${car.id}`} className="banner-btn car-link">
         Features
       </Link>
