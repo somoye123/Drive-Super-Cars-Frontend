@@ -23,8 +23,7 @@ const AppointmentList = ({
   return (
     <section className="super-cars">
       <div className="section-title">
-        <h4>Test Drive Appointments</h4>
-        <div />
+        <h4>Your Appointments</h4>
       </div>
       <div className="super-cars-center">
         {appointment}
