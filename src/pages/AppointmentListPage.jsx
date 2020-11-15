@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loadAppointments } from '../redux/actions/appointmentsAction';
+import Car from '../components/Car';
 
 const AppointmentList = ({
   User, Appointments, auth, loadAppointments,
@@ -12,6 +12,8 @@ const AppointmentList = ({
     loadAppointments(User.id, token);
   };
 
+  const appointment = Appointments.map(car => <Car key={car.id} car={car} />);
+
   React.useEffect(() => {
     loadUserAppointments();
   }, []);
@@ -19,20 +21,15 @@ const AppointmentList = ({
   if (!Appointments) return <h2 className="section-title">no Appointments to display</h2>;
 
   return (
-    <>
-      <section className="section">
-        {Appointments.map(car => (
-          <div className="meals-center" key={car.id}>
-            <img src={`${process.env.REACT_APP_SERVER_BLOB_PATH}${car.img_url}`} alt="car" />
-            <p>{car.name}</p>
-            <p>{car.description}</p>
-            <Link to={`/car/${car.id}`} className="btn btn-primary btn-details">
-              details
-            </Link>
-          </div>
-        ))}
-      </section>
-    </>
+    <section className="super-cars">
+      <div className="section-title">
+        <h4>Test Drive Appointments</h4>
+        <div />
+      </div>
+      <div className="super-cars-center">
+        {appointment}
+      </div>
+    </section>
   );
 };
 

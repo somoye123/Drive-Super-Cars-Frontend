@@ -71,6 +71,7 @@
 .super-cars {
   padding: 5rem 0;
   background-color: darkgray;
+  min-height: 100vh;
 }
 
 .super-cars-center {
