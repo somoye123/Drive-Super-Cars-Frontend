@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import LoadingBar from './Loading';
+import setLoadingStatus from '../redux/actions/loadingAction';
 
-function Callback({ auth }) {
+function Callback({ auth, setLoadingStatus, Loading }) {
   const location = useLocation();
   React.useEffect(() => {
     if (/access_token|id_token|error/.test(location.hash)) {
+      setLoadingStatus(true);
       auth.handleAuthentication();
     }
   }, [location]);
 
-  return (
-    <h1>Loading...</h1>
-  );
+  if (Loading) return <LoadingBar />;
+
+  return null;
 }
 
 Callback.defaultProps = {
@@ -20,6 +24,12 @@ Callback.defaultProps = {
 };
 Callback.propTypes = {
   auth: PropTypes.object || null,
+  setLoadingStatus: PropTypes.func.isRequired,
+  Loading: PropTypes.bool.isRequired,
 };
 
-export default Callback;
+const mapStateToProps = ({ Loading }) => ({ Loading });
+
+const mapDispatchToProps = { setLoadingStatus };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Callback);
