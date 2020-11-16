@@ -21,7 +21,7 @@ const AppointmentList = ({
   };
 
   React.useEffect(() => {
-    setLoadingStatus(false);
+    setLoadingStatus(true);
     loadUserAppointments();
     setLoadingStatus(false);
   }, []);
