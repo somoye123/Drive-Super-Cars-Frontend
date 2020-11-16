@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ auth }) => {
+const Navbar = ({ auth, Loading }) => {
   const { isAuthenticated, login, logout } = auth;
   const activeStyle = { color: '#F15B2A' };
+
+  if (Loading) return null;
+
   return (
 
     <header className="px-md-5 navbar-light bg-white fixed-top">
@@ -50,8 +53,9 @@ Navbar.defaultProps = {
 
 Navbar.propTypes = {
   auth: PropTypes.object || null,
+  Loading: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ User }) => ({ User });
+const mapStateToProps = ({ User, Loading }) => ({ User, Loading });
 
 export default connect(mapStateToProps)(Navbar);
