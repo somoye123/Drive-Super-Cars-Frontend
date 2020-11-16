@@ -71,8 +71,8 @@ body {
     font-size: 3rem;
   }
 }
-@media screen and (min-width: 992px) {
 
+@media screen and (min-width: 992px) {
   .banner {
     padding: 2rem 6rem;
   }
@@ -129,13 +129,13 @@ body {
 }
 
 .car {
-  box-shadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 5px 3px 0 rgba(0, 0, 0, 0.5);
   transition: all 0.3s linear;
   position: relative;
 }
 
 .car:hover {
-  box-shadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 10px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .img-container {
@@ -160,6 +160,12 @@ body {
 
 .img-container:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.detail img {
+  border-radius: 0.25rem;
+  width: 100%;
+  min-height: 45vh;
 }
 
 .img-container:hover img {
@@ -212,12 +218,6 @@ body {
   max-width: 1170px;
   margin: 0 auto;
   text-align: left;
-}
-
-.detail img {
-  border-radius: 0.25rem;
-  width: 100%;
-  min-height: 45vh;
 }
 
 .detail p {
