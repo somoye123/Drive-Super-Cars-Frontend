@@ -1,6 +1,6 @@
 export default {
   cars: [],
-  loading: true,
+  loading: false,
   car: {},
   user: {},
   appointment: [],
