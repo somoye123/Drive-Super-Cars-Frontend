@@ -3,5 +3,5 @@ export default {
   loading: false,
   car: {},
   user: {},
-  appointment: [],
+  appointment: null,
 };
