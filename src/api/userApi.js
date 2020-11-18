@@ -16,7 +16,7 @@ export const getUser = (body, token) => fetch(baseUrl, {
   .catch(handleError);
 
 // eslint-disable-next-line camelcase
-export const createAppointment = async (user_id, car_id, token) => {
+export const createAppointment = async (user_id, car_id, date, city, token) => {
   try {
     const response = await fetch(createAppointmentUrl, {
       method: 'POST',
@@ -24,7 +24,12 @@ export const createAppointment = async (user_id, car_id, token) => {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ user_id, car_id }),
+      body: JSON.stringify({
+        user_id,
+        car_id,
+        date,
+        city,
+      }),
     });
     if (response.ok || response.status === 201) return toast.success('appointment created successfully');
     throw new Error('Network response was not ok.');
