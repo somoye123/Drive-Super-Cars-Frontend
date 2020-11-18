@@ -67,13 +67,12 @@ const SingleCar = ({
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Your Time Zone"
-                    id="timezone"
-                    list="zoneList"
+                    placeholder="Your City"
+                    list="cityList"
                     ref={register({ required: true })}
                     name="city"
                   />
-                  <datalist id="zoneList">
+                  <datalist id="cityList">
                     <option value="Hong Kong" />
                     <option value="Bangkok" />
                     <option value="London" />
