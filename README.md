@@ -51,17 +51,18 @@ For the full working application click [here](https://drive-super-cars.netlify.a
 
 ### Production Dependencies
 
-| **Dependency**   | **Use**                                               |
-| ---------------- | ----------------------------------------------------- |
-| prop-types       | Declare types for props passed into React components  |
-| react            | React library                                         |
-| react-toastify   | Display messages to the user                          |
-| react-dom        | React library for DOM rendering                       |
-| react-redux      | Connects React components to Redux                    |
-| react-router-dom | React library for routing                             |
-| redux            | Library for unidirectional data flows                 |
-| redux-thunk      | Async redux library                                   |
-| auth0-js         | Auth0 Authentication                                  |
+| **Dependency**   | **Use**                                                 |
+| ---------------- | --------------------------------------------------------|
+| prop-types       | Declare types for props passed into React components    |
+| react            | React library                                           |
+| react-toastify   | Display messages to the user                            |
+| react-dom        | React library for DOM rendering                         |
+| react-redux      | Connects React components to Redux                      |
+| react-router-dom | React library for routing                               |
+| redux            | Library for unidirectional data flows                   |
+| redux-thunk      | Async redux library                                     |
+| auth0-js         | Auth0 Authentication                                    |
+| react-hook-form  | React library for form                                  |
 
 ### Development Dependencies
 
